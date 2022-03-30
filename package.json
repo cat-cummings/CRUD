@@ -1,0 +1,9 @@
+{
+  "name": "crud-stickers",
+  "version": "1.0.0"
+},
+{
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
