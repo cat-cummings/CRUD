@@ -1,9 +1,42 @@
 {
-  "name": "crud-stickers",
-  "version": "1.0.0"
-},
-{
+  "name": "crud-cat-stickies",
+  "version": "1.0.0",
+  "description": "todo app in the web browser.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "knex": "knex",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cat-cummings/CRUD"
+  },
+  "eslintConfig": {
+    "extends": "eda"
+  },
+  "keywords": [],
+  "author": "Cat Cummings",
+  "homepage": "https://github.com/cat-cummings/CRUD#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "react-router-dom": "^6.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-eda": "^1.1.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^26.6.1",
+    "prettier": "^2.5.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
