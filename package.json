@@ -21,6 +21,11 @@
   "author": "Cat Cummings",
   "homepage": "https://github.com/cat-cummings/CRUD#readme",
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.8",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "knex": "^1.0.4",
+    "nodemon": "^2.0.15",
     "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
