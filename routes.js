@@ -7,7 +7,7 @@ const router = express.Router()
 // routes
 
 router.get('/', (req, res) => {
-  res.send('this works!')
+  res.render('home')
 })
 
 module.exports = router
