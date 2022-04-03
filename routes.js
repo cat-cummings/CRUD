@@ -10,4 +10,31 @@ router.get('/', (req, res) => {
   res.render('home')
 })
 
+router.get('/all', (req, res) => {
+  db.listTasks()
+    .then((tasks) => {
+      const data = {
+        tasks,
+      }
+      res.render('all_tasks', data)
+    })
+    .catch((err) => {
+      res.status(500).send('uh oh - ' + err.message)
+    })
+})
+
+router.get('/id/:id', (req, res) => {
+  const id = req.params.id
+  db.getTasksById(id)
+    .then((tasks) => {
+      const data = {
+        tasks,
+      }
+      res.render('user', data)
+    })
+    .catch((err) => {
+      res.status(500).send('uh oh - ' + err.message)
+    })
+})
+
 module.exports = router
