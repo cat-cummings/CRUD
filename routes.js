@@ -27,10 +27,7 @@ router.get('/add', (req, res) => {
   res.render('add_tasks')
 })
 
-router.post('/add', (req, res) => {
-  console.log(req.body)
-  res.redirect('/add')
-})
+router.post('/add', (req, res) => {})
 
 router.get('/id/:id', (req, res) => {
   const id = req.params.id
