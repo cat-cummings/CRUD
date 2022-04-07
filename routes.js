@@ -1,3 +1,5 @@
+/* eslint-disable promise/catch-or-return */
+/* eslint-disable promise/no-nesting */
 // route setup
 
 const express = require('express')
@@ -27,7 +29,36 @@ router.get('/add', (req, res) => {
   res.render('add_tasks')
 })
 
-router.post('/add', (req, res) => {})
+//add post route
+router.post('/add', (req, res) => {
+  const { name, task, due_date } = req.body
+
+  //logic for creation date
+  let creation_date = new Date()
+  const yyyy = creation_date.getFullYear()
+  let mm = creation_date.getMonth() + 1
+  let dd = creation_date.getDate()
+
+  creation_date = `${dd}/${mm}/${yyyy}`
+
+  db.getUserByName(name)
+    .then((userObj) => {
+      const user_id = userObj.id
+      const new_task = {
+        user_id, //this throws error
+        task,
+        creation_date,
+        due_date,
+      }
+
+      db.addTask(new_task).then(() => {
+        res.redirect('/')
+      })
+    })
+    .catch((err) => {
+      res.status(500).send('oops -' + err.message)
+    })
+})
 
 router.get('/id/:id', (req, res) => {
   const id = req.params.id

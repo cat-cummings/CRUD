@@ -16,6 +16,10 @@ function getTasksById(id, db = conn) {
     .select()
 }
 
+function getUserByName(name, db = conn) {
+  return db('users').where('name', name).first()
+}
+
 function addTask(input, db = conn) {
   return db('tasks')
     .join('users_tasks', 'tasks.id', 'users_tasks.task_id')
@@ -27,4 +31,5 @@ module.exports = {
   listTasks,
   getTasksById,
   addTask,
+  getUserByName,
 }
