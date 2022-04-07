@@ -43,16 +43,19 @@ router.post('/add', (req, res) => {
 
   db.getUserByName(name)
     .then((userObj) => {
-      const user_id = userObj.id
       const new_task = {
-        user_id, //this throws error
         task,
         creation_date,
         due_date,
       }
-
       db.addTask(new_task).then(() => {
-        res.redirect('/')
+        const user_task = {
+          user_id: userObj.id,
+          task_id: new_task.id, //not grabbing this correctly returning NULL
+        }
+        db.addUserTask(user_task).then(() => {
+          res.redirect('/')
+        })
       })
     })
     .catch((err) => {
