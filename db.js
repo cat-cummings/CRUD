@@ -32,6 +32,10 @@ function getLastTaskID(db = conn) {
   return db('tasks').max('id AS task_id')
 }
 
+function deleteTask(task, db = conn) {
+  return db('tasks').where('task', task).del(task)
+}
+
 module.exports = {
   listTasks,
   getTasksById,
@@ -39,4 +43,5 @@ module.exports = {
   getUserByName,
   addUserTask,
   getLastTaskID,
+  deleteTask,
 }

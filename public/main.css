@@ -38,3 +38,8 @@ a:hover {
     justify-content: center;
     text-align: left;
 }
+
+.buttons {
+    display: flex;
+    padding-left: 10px;
+}

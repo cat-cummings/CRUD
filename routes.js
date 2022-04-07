@@ -67,6 +67,16 @@ router.post('/add', (req, res) => {
   })
 })
 
+router.get('/delete', (req, res) => {
+  res.render('delete_task')
+})
+
+router.post('/delete', (req, res) => {
+  //task name is submitted
+  //match task name to tasks table and delete task
+  //delete task from users_tasks table using task_id/task.id that matches the task name
+})
+
 router.get('/id/:id', (req, res) => {
   const id = req.params.id
   db.getTasksById(id)
