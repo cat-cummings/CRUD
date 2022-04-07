@@ -28,10 +28,15 @@ function addUserTask(input, db = conn) {
   return db('users_tasks').insert(input)
 }
 
+function getLastTaskID(db = conn) {
+  return db('tasks').max('id AS task_id')
+}
+
 module.exports = {
   listTasks,
   getTasksById,
   addTask,
   getUserByName,
   addUserTask,
+  getLastTaskID,
 }

@@ -41,26 +41,30 @@ router.post('/add', (req, res) => {
 
   creation_date = `${dd}/${mm}/${yyyy}`
 
-  db.getUserByName(name)
-    .then((userObj) => {
-      const new_task = {
-        task,
-        creation_date,
-        due_date,
-      }
-      db.addTask(new_task).then(() => {
-        const user_task = {
-          user_id: userObj.id,
-          task_id: new_task.id, //not grabbing this correctly returning NULL
-        }
-        db.addUserTask(user_task).then(() => {
-          res.redirect('/')
+  db.getUserByName(name).then((userObj) => {
+    //get user id that matches name for tasks table
+    const new_task = {
+      task,
+      creation_date,
+      due_date,
+    }
+    db.addTask(new_task) //adds task to task table
+      .then(() => {
+        db.getLastTaskID().then((id) => {
+          const user_task = {
+            user_id: userObj.id,
+            task_id: id[0].task_id, //gets id of task just added
+          }
+          db.addUserTask(user_task).then(() => {
+            //adds task id and user id to users_tasks table
+            res.redirect('/')
+          })
         })
       })
-    })
-    .catch((err) => {
-      res.status(500).send('oops -' + err.message)
-    })
+      .catch((err) => {
+        res.status(500).send('oops -' + err.message)
+      })
+  })
 })
 
 router.get('/id/:id', (req, res) => {
