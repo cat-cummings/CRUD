@@ -8,7 +8,7 @@ function listTasks(db = conn) {
   return db('tasks').select()
 }
 
-function getTasksById(id, db = conn) {
+function getTasksByUserId(id, db = conn) {
   return db('tasks')
     .join('users_tasks', 'tasks.id', 'users_tasks.task_id')
     .join('users', 'users_tasks.user_id', 'users.id')
@@ -32,16 +32,21 @@ function getLastTaskID(db = conn) {
   return db('tasks').max('id AS task_id')
 }
 
-function deleteTask(task, db = conn) {
-  return db('tasks').where('task', task).del(task)
+function deleteTask(id, db = conn) {
+  return db('tasks').where('id', id).del()
+}
+
+function getTaskByTaskID(task, db = conn) {
+  return db('tasks').where('task', task).select()
 }
 
 module.exports = {
   listTasks,
-  getTasksById,
+  getTasksByUserId,
   addTask,
   getUserByName,
   addUserTask,
   getLastTaskID,
   deleteTask,
+  getTaskByTaskID,
 }
