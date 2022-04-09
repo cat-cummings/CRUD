@@ -1,0 +1,17 @@
+<h1>What task would you like to Update?</h1>
+
+<div class="add_container">
+    <form action="/update" method="post">
+    <label for="task">
+            What task would you like to update?
+            <input type="text" name="task" value="{{task}}">
+        </label>
+        <label for="due_date">
+            What is the new due date?
+            <input type="text" name="due_date" value="{{due_date}}">
+        </label>
+        <input type="submit" name="" value="Submit">
+    </form>
+</div>
+
+<a href="/">Home</a>

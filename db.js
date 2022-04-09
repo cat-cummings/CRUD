@@ -40,6 +40,10 @@ function getTaskByTaskID(task, db = conn) {
   return db('tasks').where('task', task).select().first()
 }
 
+function updateTaskDueDate(id, due_date, db = conn) {
+  return db('tasks').where('id', id).update('due_date', due_date)
+}
+
 module.exports = {
   listTasks,
   getTasksByUserID,
@@ -49,4 +53,5 @@ module.exports = {
   getLastTaskID,
   deleteTask,
   getTaskByTaskID,
+  updateTaskDueDate,
 }

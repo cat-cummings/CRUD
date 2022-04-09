@@ -78,10 +78,29 @@ router.post('/delete', (req, res) => {
   const task = req.body.task
   db.getTaskByTaskID(task)
     .then((taskID) => {
-      const id = taskID
-      const task = id.id
+      const task = taskID.id
       db.deleteTask(task).then(() => {
         res.redirect('/all')
+      })
+    })
+    .catch((err) => {
+      res.status(500).send('oops -' + err.message)
+    })
+})
+
+// Update task
+router.get('/update', (req, res) => {
+  res.render('update_task')
+})
+
+router.post('/update', (req, res) => {
+  const task = req.body.task
+  db.getTaskByTaskID(task)
+    .then((taskID) => {
+      const task = taskID.id
+      const new_date = req.body.due_date
+      db.updateTaskDueDate(task, new_date).then(() => {
+        res.redirect('all')
       })
     })
     .catch((err) => {
