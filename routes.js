@@ -75,14 +75,12 @@ router.get('/delete', (req, res) => {
 })
 
 router.post('/delete', (req, res) => {
-  //task name is submitted - match task name with task id
-  //delete task by id
-  //delete task from users_tasks table using task_id/task.id that matches the task name
   const task = req.body.task
   db.getTaskByTaskID(task)
     .then((taskID) => {
       const id = taskID
-      db.deleteTask(id[0].id).then(() => {
+      const task = id.id
+      db.deleteTask(task).then(() => {
         res.redirect('/all')
       })
     })
