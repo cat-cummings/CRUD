@@ -1,8 +1,8 @@
 exports.up = function (knex) {
   return knex.schema.createTable('users_tasks', (table) => {
     table.increments('id').primary()
-    table.int('user_id').references('users.id')
-    table.int('task_id').references('tasks.id')
+    table.int('user_id')
+    table.int('task_id')
   })
 }
 
