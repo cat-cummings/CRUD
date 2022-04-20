@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "todo app in the web browser.",
   "main": "index.js",
+  "build": "knex migrate:latest",
   "scripts": {
     "start": "node index",
     "dev": "node index",
@@ -16,7 +17,7 @@
   },
   "engines": {
     "node": "16.14.0"
-},
+  },
   "eslintConfig": {
     "extends": "eda"
   },
@@ -29,6 +30,7 @@
     "express-handlebars": "^6.0.3",
     "knex": "^1.0.4",
     "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
     "react-router-dom": "^6.2.2"
   },
   "devDependencies": {

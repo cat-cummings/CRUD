@@ -21,7 +21,7 @@ function getUserByName(name, db = conn) {
 }
 
 function addTask(input, db = conn) {
-  return db('tasks').insert(input)
+  return db('tasks').insert(input, 'id')
 }
 
 function addUserTask(input, db = conn) {
